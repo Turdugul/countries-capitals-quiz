@@ -16,19 +16,19 @@ const Result: React.FC<ResultProps> = ({
   return (
     <div className="container  mt-4 space-x-2">
       {correctAnswers || wrongAnswers ? (
-        <div className="flex px-4 gap-1 items-center">
-          <div className="flex-1">
+        <div className="flex px-2 gap-1  justify-between items-center">
+          <div className="sm:flex-1">
             <p className="mb-2">
               Correct:{' '}
               <span className="text-green-500">
                 {' '}
-                {correctAnswers} / {totalQuestions}{' '}
+                {correctAnswers}/{totalQuestions}{' '}
               </span>
             </p>
             <p className="mb-2">
               Wrong:{' '}
               <span className="text-red-500">
-                {wrongAnswers} / {totalQuestions}{' '}
+                {wrongAnswers}/{totalQuestions}{' '}
               </span>
             </p>
           </div>
