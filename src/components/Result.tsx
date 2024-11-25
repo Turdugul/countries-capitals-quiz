@@ -14,19 +14,19 @@ const Result: React.FC<ResultProps> = ({
   handleRestart,
 }) => {
   return (
-    <div className="container mt-4 space-x-2">
+    <div className="container  mt-4 space-x-2">
       {correctAnswers || wrongAnswers ? (
-        <div className="flex gap-2  items-center">
+        <div className="flex px-4 gap-1 items-center">
           <div className="flex-1">
             <p className="mb-2">
-              Correct Answers:{' '}
+              Correct:{' '}
               <span className="text-green-500">
                 {' '}
                 {correctAnswers} / {totalQuestions}{' '}
               </span>
             </p>
             <p className="mb-2">
-              Wrong Answers:{' '}
+              Wrong:{' '}
               <span className="text-red-500">
                 {wrongAnswers} / {totalQuestions}{' '}
               </span>
