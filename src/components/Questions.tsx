@@ -33,7 +33,9 @@ const Questions: React.FC<QuestionProps> = ({
           alt={country.country}
           className="w-34 bg-cover border-2 shadow-2xl border-gray-700 dark:border-gray-200 h-20 mx-auto"
         />
-        <h1 className="text-2xl font-bold mt-4">{country.country}</h1>
+        <h1 className="flex-1 pt-4 text-lg sm:pt-0 sm:text-2xl text-center font-bold">
+          {country.country}
+        </h1>
       </div>
 
       <div className="space-y-2">

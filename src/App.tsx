@@ -3,6 +3,7 @@ import Questions from './components/Questions';
 import Result from './components/Result';
 import ThemeToggle from './components/ThemeToggle';
 import { countries } from './data/countries';
+import Final from './components/Final';
 
 type State = {
   currentCountryIndex: number;
@@ -89,21 +90,28 @@ const App: React.FC = () => {
           </h1>
           <ThemeToggle />
         </div>
-
-        <Questions
-          country={currentCountry}
-          selectedAnswer={selectedAnswer}
-          options={options}
-          isCorrect={state.isCorrect}
-          handleAnswer={handleAnswer}
-        />
-
-        <Result
-          correctAnswers={state.correctAnswers}
-          wrongAnswers={state.wrongAnswers}
-          handleRestart={handleRestart}
-          totalQuestions={countries.length}
-        />
+        {state.correctAnswers === countries.length ? (
+          <Final
+            correctAnswers={state.correctAnswers}
+            totalQuestions={countries.length}
+          />
+        ) : (
+          <>
+            <Questions
+              country={currentCountry}
+              selectedAnswer={selectedAnswer}
+              options={options}
+              isCorrect={state.isCorrect}
+              handleAnswer={handleAnswer}
+            />
+            <Result
+              correctAnswers={state.correctAnswers}
+              wrongAnswers={state.wrongAnswers}
+              handleRestart={handleRestart}
+              totalQuestions={countries.length}
+            />
+          </>
+        )}
       </div>
     </div>
   );
