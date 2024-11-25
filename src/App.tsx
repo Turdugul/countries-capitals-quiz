@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import Questions from './components/Questions';
 import Result from './components/Result';
 import ThemeToggle from './components/ThemeToggle';
-import countriesData from './data/countries.json';
+import { countries } from './data/countries';
 
 type State = {
   currentCountryIndex: number;
@@ -28,8 +28,7 @@ const reducer = (state: State, action: Action): State => {
     case 'NEXT_COUNTRY':
       return {
         ...state,
-        currentCountryIndex:
-          (state.currentCountryIndex + 1) % countriesData.length,
+        currentCountryIndex: (state.currentCountryIndex + 1) % countries.length,
         isCorrect: null,
       };
     case 'ANSWER':
@@ -55,11 +54,11 @@ const App: React.FC = () => {
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
-  const currentCountry = countriesData[state.currentCountryIndex];
+  const currentCountry = countries[state.currentCountryIndex];
 
   useEffect(() => {
     const generateOptions = () => {
-      const capitals = countriesData.map((c) => c.capital);
+      const capitals = countries.map((c) => c.capital);
       const choices = [currentCountry.capital];
       while (choices.length < 4) {
         const randomCapital =
@@ -76,14 +75,14 @@ const App: React.FC = () => {
     setSelectedAnswer(selectedCapital);
     const isCorrect = selectedCapital === currentCountry.capital;
     dispatch({ type: 'ANSWER', isCorrect });
-    setTimeout(() => dispatch({ type: 'NEXT_COUNTRY' }), 2000);
+    setTimeout(() => dispatch({ type: 'NEXT_COUNTRY' }), 1000);
   };
 
   const handleRestart = () => dispatch({ type: 'RESET' });
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex justify-center p-4">
-      <div className="max-w-lg h-3/4 sm:h-2/4 w-full bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6">
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex justify-center p-6">
+      <div className="max-w-lg h-3/4 sm:h-2/4 w-full bg-white dark:bg-gray-700 rounded-lg shadow-2xl p-6 m-4">
         <div className="flex justify-between items-center mb-4">
           <h1 className=" flex-1 text-2xl text-center font-bold">
             Countries and Capitals Quiz
@@ -103,7 +102,7 @@ const App: React.FC = () => {
           correctAnswers={state.correctAnswers}
           wrongAnswers={state.wrongAnswers}
           handleRestart={handleRestart}
-          totalQuestions={countriesData.length}
+          totalQuestions={countries.length}
         />
       </div>
     </div>

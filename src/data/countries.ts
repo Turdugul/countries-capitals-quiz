@@ -1,6 +1,5 @@
-[
+export const countries = [
   { "country": "Afghanistan", "capital": "Kabul", "flag": "AF" },
-  { "country": "Kyrgyzstan", "capital": "Bishkek", "flag": "KG" },
   { "country": "Albania", "capital": "Tirana", "flag": "AL" },
   { "country": "Algeria", "capital": "Algiers", "flag": "DZ" },
   { "country": "Andorra", "capital": "Andorra la Vella", "flag": "AD" },
@@ -219,4 +218,4 @@
   { "country": "Yemen", "capital": "Sana'a", "flag": "YE" },
   { "country": "Zambia", "capital": "Lusaka", "flag": "ZM" },
   { "country": "Zimbabwe", "capital": "Harare", "flag": "ZW" }
-]
+] as const
