@@ -84,7 +84,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex justify-center p-6">
       <div className="max-w-lg h-2/4 sm:h-2/4 w-full bg-white dark:bg-gray-700 rounded-lg shadow-2xl p-6 m-4">
         <div className="flex justify-between items-center mb-4 flex-col-reverse sm:flex-row">
-          <h1 className="flex-1 text-base sm:text-2xl text-center font-bold">
+          <h1 className="flex-1 pt-4 text-base sm:pt-0 sm:text-2xl text-center font-bold">
             Countries and Capitals Quiz
           </h1>
           <ThemeToggle />
