@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "@typescript-eslint", "tailwindcss", "prettier"],
+  "rules": {
+    "prettier/prettier": "error", // Ensure Prettier formatting
+    "react/react-in-jsx-scope": "off", // Not necessary with React 17+ JSX Transform
+    "react/prop-types": "off", // Disable prop types if using TypeScript
+    "@typescript-eslint/explicit-module-boundary-types": "off", // Disable this if you don’t want to enforce explicit return types
+    "tailwindcss/classnames-order": "warn", // Optional rule to enforce the order of classnames in Tailwind
+    "tailwindcss/no-custom-classname": "off" // Allow custom classnames if necessary
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Automatically detect the React version
+    }
+  }
+}
