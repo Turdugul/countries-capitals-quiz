@@ -1,23 +1,25 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    eslint({
-      // Options to customize the ESLint plugin
-      include: ['src/**/*.ts', 'src/**/*.tsx'], // Lint TypeScript files in the `src` directory
-    }),
+    ...(mode === 'development'
+      ? [
+          eslint({
+            include: ['src/**/*.ts', 'src/**/*.tsx'],
+            cache: false,
+            emitError: true,
+          }),
+        ]
+      : []),
   ],
-});
+  build: {
+    outDir: 'dist',
+    sourcemap: mode === 'development',
+  },
+  server: {
+    open: true,
+  },
+}));
